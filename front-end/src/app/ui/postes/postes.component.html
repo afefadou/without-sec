@@ -1,0 +1,41 @@
+<div class="p-3">
+  <button type="button" class="btn btn-outline-success mx-1" (click)="addPoste()">Ajouter Poste</button>
+
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr class="table-secondary" >
+      <th>ID</th>
+      <th>Titre</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Creation Date</th>
+      <th>Salary</th>
+      <th>Contract Type</th>
+      <th>Team</th>
+      <th class="text-center">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of postes">
+      <td>{{ p.id }}</td>
+      <td>{{ p.titre }}</td>
+      <td>{{ p.description }}</td>
+      <td>{{ p.status }}</td>
+      <td>{{ p.creationDate }}</td>
+      <td>{{ p.salary }}</td>
+      <td>{{ p.contractType }}</td>
+      <td>{{ p.team }}</td>
+      <td>
+        <!-- Buttons for actions -->
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-outline-secondary mx-1" (click)="deletePoste(p.id)">Modifier</button>
+          <button type="button" class="btn btn-outline-secondary mx-1" (click)="deletePoste(p.id)">Voir détail</button>
+          <button type="button" class="btn btn-outline-success mx-1" (click)="deletePoste(p.id)">Assigner collab</button>
+          <button type="button" class="btn btn-outline-danger mx-1" (click)="deletePoste(p.id)">Supprimer</button>
+        </div>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>

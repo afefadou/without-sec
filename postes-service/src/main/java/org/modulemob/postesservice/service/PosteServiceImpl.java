@@ -69,21 +69,21 @@ public class PosteServiceImpl implements PosteService {
 
     @Override
     public String saveCompetenceForPoste(String id_com, String id_post) {
-        Optional<Poste> optionalPoste = this.posteRepository.findById(id_post);
-        if (optionalPoste.isPresent()) {
-            Optional<Competence> optionalCompetence = this.competenceRepository.findById(id_com);
-            if (optionalCompetence.isPresent()) {
-                Poste poste = optionalPoste.get();
-                Competence competence = optionalCompetence.get();
-
-                // Set the competenceDate to the current date
-                competence.setDateDajoutCompetence(new Date());
-
-               // poste.getCompetences().add(competence); // Add the competence to the set of competences
-                this.posteRepository.save(poste);
-                return "Insertion de competence terminée";
-            }
-        }
+//        Optional<Poste> optionalPoste = this.posteRepository.findById(id_post);
+//        if (optionalPoste.isPresent()) {
+//            Optional<Competence> optionalCompetence = this.competenceRepository.findById(id_com);
+//            if (optionalCompetence.isPresent()) {
+//                Poste poste = optionalPoste.get();
+//                Competence competence = optionalCompetence.get();
+//
+//                // Set the competenceDate to the current date
+//                competence.setDateDajoutCompetence(new Date());
+//
+//               // poste.getCompetences().add(competence); // Add the competence to the set of competences
+//                this.posteRepository.save(poste);
+//                return "Insertion de competence terminée";
+//            }
+//        }
         return "Vien Demain";
     }
 
@@ -183,10 +183,11 @@ public class PosteServiceImpl implements PosteService {
                 Poste poste = optionalPoste.get();
                 Competence competence = optionalCompetence.get();
 
-                // Set the competenceDate to the current date
-                competence.setDateDajoutCompetence(new Date());
 
-                PosteCompetence posteCompetence = new PosteCompetence(poste, competence, level);
+
+                PosteCompetence posteCompetence = new PosteCompetence(poste, competence);
+                // Set the competenceDate to the current date
+                posteCompetence.setRatedOn(new Date());
                // poste.getPosteCompetences().add(posteCompetence);
                // competence.getPosteCompetences().add(posteCompetence);
                 this.posteRepository.save(poste);
@@ -272,32 +273,34 @@ public class PosteServiceImpl implements PosteService {
 
     @Override
     public List<CompetenceDTO> posteHistory(String posteId) {
-        List<Competence> competences = competenceRepository.findByPostes_Id(posteId);
-        return competences.stream().map(op->dtoMapper.fromCompetence(op)).collect(Collectors.toList());
+       // List<Competence> competences = competenceRepository.findByPostes_Id(posteId);
+       // return competences.stream().map(op->dtoMapper.fromCompetence(op)).collect(Collectors.toList());
 
 
+        return null;
     }
 
     @Override
     public PosteHistoryDTO getPosteHistory(String posteId, int page, int size) throws PosteNotFoundException {
-        Poste poste=posteRepository.findById(posteId).orElse(null);
-        if(poste==null) throw new PosteNotFoundException("Poste not Found");
-        Page<Competence> posteCompetences = competenceRepository.findByPostes_IdOrderByDateDajoutCompetenceDesc(posteId, PageRequest.of(page, size));
-        //Page<Collab> posteCollabs = collabRepository.findByPosteIdOrderByCollabDateDesc(posteId, PageRequest.of(page, size));
-
-        PosteHistoryDTO posteHistoryDTO=new PosteHistoryDTO();
-
-        List<CompetenceDTO> competenceDTOS = posteCompetences.getContent().stream().map(op -> dtoMapper.fromCompetence(op)).collect(Collectors.toList());
-        //List<CollabDTO> collabDTOS = posteCollabs.getContent().stream().map(op -> dtoMapper.fromCollab(op)).collect(Collectors.toList());
-
-        posteHistoryDTO.setCompetenceDTOS(competenceDTOS);
-       // posteHistoryDTO.setCollabDTOS(collabDTOS);
-
-        posteHistoryDTO.setPosteId(poste.getId());
-        posteHistoryDTO.setCurrentPage(page);
-        posteHistoryDTO.setPageSize(size);
-        posteHistoryDTO.setTotalPages(posteCompetences.getTotalPages());
-        return posteHistoryDTO;
+//        Poste poste=posteRepository.findById(posteId).orElse(null);
+//        if(poste==null) throw new PosteNotFoundException("Poste not Found");
+//        Page<Competence> posteCompetences = competenceRepository.findByPostes_IdOrderByDateDajoutCompetenceDesc(posteId, PageRequest.of(page, size));
+//        //Page<Collab> posteCollabs = collabRepository.findByPosteIdOrderByCollabDateDesc(posteId, PageRequest.of(page, size));
+//
+//        PosteHistoryDTO posteHistoryDTO=new PosteHistoryDTO();
+//
+//        List<CompetenceDTO> competenceDTOS = posteCompetences.getContent().stream().map(op -> dtoMapper.fromCompetence(op)).collect(Collectors.toList());
+//        //List<CollabDTO> collabDTOS = posteCollabs.getContent().stream().map(op -> dtoMapper.fromCollab(op)).collect(Collectors.toList());
+//
+//        posteHistoryDTO.setCompetenceDTOS(competenceDTOS);
+//       // posteHistoryDTO.setCollabDTOS(collabDTOS);
+//
+//        posteHistoryDTO.setPosteId(poste.getId());
+//        posteHistoryDTO.setCurrentPage(page);
+//        posteHistoryDTO.setPageSize(size);
+//        posteHistoryDTO.setTotalPages(posteCompetences.getTotalPages());
+//        return posteHistoryDTO;
+        return null;
     }
 
 
@@ -342,20 +345,9 @@ public class PosteServiceImpl implements PosteService {
     }
 
     @Override
-    public List<CollabDTO> listeCollabs() {
+    public List<Collab> listeCollabs() {
         List<Collab> collabs = collabRepository.findAll();
-        List<CollabDTO> collabDTOS = collabs.stream()
-                .map(collab -> dtoMapper.fromCollab(collab))
-                .collect(Collectors.toList());
-        /*
-        List<CollabDTO> collabDTOS=new ArrayList<>();
-        for (Collab collab:collabs){
-            CollabDTO collabDTO=dtoMapper.fromCollab(collab);
-            collabDTOS.add(collabDTO);
-        }
-        *
-         */
-        return collabDTOS;
+        return collabs;
     }
 
 //    @Override

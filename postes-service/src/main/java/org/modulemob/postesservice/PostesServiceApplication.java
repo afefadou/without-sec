@@ -29,22 +29,57 @@ public class PostesServiceApplication {
                                                CollabRepository collabRepository){
         return args -> {
             posteRepository.save(Poste.builder()
-                    .id(UUID.randomUUID().toString())
+                    .id("1p")
                     .titre("java developer")
                     .status(OUVERT)
                     .description("open for recruit")
                     .build());
             posteRepository.save(Poste.builder()
-                    .id(UUID.randomUUID().toString())
+                    .id("2p")
                     .titre("php developer")
                     .status(OUVERT)
                     .description("open for recruit")
                     .build());
             posteRepository.save(Poste.builder()
-                    .id(UUID.randomUUID().toString())
+                    .id("3p")
                     .titre("project manager")
                     .status(OUVERT)
                     .description("open for recruit")
+                    .build());
+            collabRepository.save(Collab.builder()
+                    .id(1L)
+                    .nom("fida")
+                    .email("fida@gmail.com")
+                    .build());
+            collabRepository.save(Collab.builder()
+                    .id(2L)
+                    .nom("marwen")
+                    .email("fida@gmail.com")
+                    .build());
+            collabRepository.save(Collab.builder()
+                    .id(3L)
+                    .nom("marwa")
+                    .email("fida@gmail.com")
+                    .build());
+            collabRepository.save(Collab.builder()
+                    .id(4L)
+                    .nom("seif")
+                    .email("fida@gmail.com")
+                    .build());
+            competenceRepository.save(Competence.builder()
+                    .id("1")
+                    .nom("java")
+                    .description("Some Description")
+                    .build());
+            competenceRepository.save(Competence.builder()
+                    .id("2")
+                    .nom("php")
+                    .description("Some Description")
+                    .build());
+            competenceRepository.save(Competence.builder()
+                    .id("3")
+                    .nom("c")
+                    .description("Some Description")
                     .build());
 //            Stream.of("fida","marwen","hazem").forEach(name->{
 //                Collab collab= new Collab();

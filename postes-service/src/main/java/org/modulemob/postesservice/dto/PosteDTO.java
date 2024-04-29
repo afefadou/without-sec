@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.modulemob.postesservice.enums.AccountStatus;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -25,5 +26,6 @@ public class PosteDTO {
     private String contractType;
     private String team;
     private CollabDTO collab;
-    private Set<CompetenceDTO> competences;
+    private PosteCompetenceDTO postecompetence;
+
 }

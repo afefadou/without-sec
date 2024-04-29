@@ -1,30 +1,35 @@
 <div class="p-3">
-  <button type="button" class="btn btn-outline-success mx-1" (click)="addPoste()">Ajouter Poste</button>
+
+    <button type="button" class="btn btn-outline-success mx-1">Ajouter Poste</button>
 
   <table class="table table-bordered table-hover">
     <thead>
+
     <tr class="table-secondary" >
-      <th>ID</th>
+
       <th>Titre</th>
       <th>Description</th>
       <th>Status</th>
-      <th>Creation Date</th>
       <th>Salary</th>
       <th>Contract Type</th>
       <th>Team</th>
+      <th>Collaborateur</th>
       <th class="text-center">Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let p of postes">
-      <td>{{ p.id }}</td>
+
       <td>{{ p.titre }}</td>
       <td>{{ p.description }}</td>
       <td>{{ p.status }}</td>
-      <td>{{ p.creationDate }}</td>
       <td>{{ p.salary }}</td>
       <td>{{ p.contractType }}</td>
       <td>{{ p.team }}</td>
+      <td>
+        <ng-container *ngIf="p.collab; else emptyPost">{{ p.collab.nom }}</ng-container>
+        <ng-template #emptyPost>Empty Post</ng-template>
+      </td>
       <td>
         <!-- Buttons for actions -->
         <div class="btn-group" role="group">

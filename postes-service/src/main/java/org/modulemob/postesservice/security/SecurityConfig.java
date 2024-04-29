@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .csrf(csrf->csrf.disable()) //pour h2
                 .cors(Customizer.withDefaults())
                 .headers(h->h.frameOptions(fo->fo.disable())) //desactiver la protection des frames de h2
-                .authorizeHttpRequests(ar->ar.requestMatchers("/swagger-ui.html","/swagger-ui/**","/v3/**","/h2-console/**","/api/**").permitAll())
+                .authorizeHttpRequests(ar->ar.requestMatchers("/swagger-ui.html","/swagger-ui/**","/v3/**","/h2-console/**","/postes/**","/competences/**","/collabs/**").permitAll())
                 .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
                 //.authorizeHttpRequests(ar->ar.requestMatchers("/api/postes").hasAuthority(("ADMIN")))
                 //.authorizeHttpRequests(ar -> ar.requestMatchers("/api/postes").permitAll())

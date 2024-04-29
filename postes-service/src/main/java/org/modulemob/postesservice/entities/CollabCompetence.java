@@ -1,37 +1,81 @@
 package org.modulemob.postesservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import jakarta.persistence.Id;
 
+import org.modulemob.postesservice.embadded.CollabCompetenceId;
+import org.modulemob.postesservice.entities.Collab;
+import org.modulemob.postesservice.entities.Competence;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
-@Entity
+@Entity(name = "CollabCompetence")
+@Table(name = "collab_competence")
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Data
-public class PosteCompetence implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "poste_id")
-    private Poste poste;
+public class CollabCompetence implements Serializable {
 
-    @ManyToOne
-    @JoinColumn(name = "competence_id")
+
+    @EmbeddedId
+    private CollabCompetenceId id;
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @MapsId("collabId")
+    @JsonIgnore
+    private Collab collab;
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @MapsId("competenceId")
+    @JsonIgnore
     private Competence competence;
 
+    @Column(name = "rated_on")
+    private Date ratedOn = new Date();
+
+    @Column(name = "level")
     private String level;
 
-    public PosteCompetence(Poste poste, Competence competence, String level) {
-        this.poste = poste;
+
+    public CollabCompetence(Collab collab, Competence competence) {
+        this.collab = collab;
         this.competence = competence;
-        this.level = level;
+        this.id = new CollabCompetenceId(collab.getId() , competence.getId());
+    }
+
+
+
+
+
+
+
+
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        CollabCompetence that = (CollabCompetence) o;
+        return Objects.equals(collab, that.collab) &&
+                Objects.equals(competence, that.competence);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(collab, competence);
     }
 }

@@ -9,9 +9,20 @@
       <list>
         <option value="$PROJECT_DIR$/postes-service/pom.xml" />
         <option value="$PROJECT_DIR$/entretien-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Decision-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../Module-mobilite-interne/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/../Module-mobilite-interne/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/DecisionH-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../Decision-service/decision-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../Module-mobilite-interne/eureka-server/pom.xml" />
       </list>
     </option>
-    <option name="workspaceImportForciblyTurnedOn" value="true" />
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/Decision-service/pom.xml" />
+        <option value="$PROJECT_DIR$/DecisionH-service/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="openjdk-21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

@@ -1,27 +1,72 @@
 package org.modulemob.postesservice.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.NaturalId;
 
-import java.util.Set;
+import java.io.Serializable;
+import java.util.*;
 
-@Entity
+@Entity(name = "Competence")
+@Table(name = "Competence")
 @Data @NoArgsConstructor @AllArgsConstructor
-public class Competence {
+@Getter
+@Setter
+@ToString
+@Builder
+public class Competence implements Serializable {
+
     @Id
     private String id;
-    private String name;
+    @NaturalId
+    private String nom;
     private String description;
 
-    @ManyToMany(mappedBy = "competences")
-    private Set<Collab> collaborateurs;
 
-    @ManyToMany(mappedBy = "competences")
-    private Set<Poste> postes;
+    @JsonIgnore
+    @OneToMany(
+            mappedBy = "competence",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<PosteCompetence> posteCompetences = new ArrayList<>();
+
+
+    @JsonIgnore
+    @OneToMany(
+            mappedBy = "competence",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<CollabCompetence> collabCompetences = new ArrayList<>();
+
+    public Competence(String nom) {
+        this.nom = nom;
+    }
+
+
 
 }
+
+
+
+
+
+
+//    @ManyToMany(mappedBy = "competences" )
+//    @JsonIgnore
+//    private List<Poste> postes = new ArrayList<>();
+
+
+//    @ManyToMany(mappedBy = "competences" ,fetch = FetchType.LAZY)
+//    private Set<Collab> collaborateurs;
+
+//*   @ManyToMany(mappedBy = "competences" )
+//    , fetch = FetchType.LAZY,
+//            cascade = {
+//                    CascadeType.PERSIST,
+//                    CascadeType.MERGE
+//            })*/
+
+

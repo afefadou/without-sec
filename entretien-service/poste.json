@@ -1,0 +1,144 @@
+{
+  "postes": [
+    {
+      "id": "1p",
+      "titre": "java developer",
+      "description": "open for recruit",
+      "status": "OUVERT",
+      "creationDate": null,
+      "closureDate": null,
+      "salary": 3000,
+      "contractType": "CDD",
+      "team": "Innovation",
+      "collab": {
+        "id": 1,
+        "nom": "fida",
+        "email": "fida@gmail.com",
+        "collabDate": null,
+        "competences": [
+          {
+            "id": "2",
+            "nom": "php",
+            "description": "Some Description",
+            "dateDajoutCompetence": "2024-04-23T13:55:48.523+00:00"
+          }
+        ]
+      },
+      "posteCompetences": [
+        {
+          "id": 1,
+          "competence": {
+            "id": "2",
+            "nom": "php",
+            "description": "Some Description",
+            "dateDajoutCompetence": "2024-04-23T13:55:48.523+00:00"
+          },
+          "dateDajoutCompetence": "2024-04-19T08:00:00Z",
+          "level": "Advanced"
+        },
+        {
+          "id": 2,
+          "competence": {
+            "id": "1",
+            "nom": "angular",
+            "description": "Some Description",
+            "dateDajoutCompetence": "2024-04-23T13:55:48.523+00:00"
+          },
+          "dateDajoutCompetence": "2024-04-19T08:00:00Z",
+          "level": "Advanced"
+        }
+      ]
+    },
+    {
+      "id": "2p",
+      "titre": "frontend developer",
+      "description": "looking for frontend developers",
+      "status": "OUVERT",
+      "creationDate": null,
+      "closureDate": null,
+      "salary": 2000,
+      "contractType": "CVP",
+      "team": "B2B",
+      "collab": null,
+      "posteCompetences": [
+        {
+          "id": 3,
+          "competence": {
+            "id": "3",
+            "nom": "React",
+            "description": "A JavaScript library for building user interfaces",
+            "dateDajoutCompetence": "2024-04-23T13:55:48.523+00:00"
+          },
+          "dateDajoutCompetence": "2024-04-20T08:00:00Z",
+          "level": "Intermediate"
+        },
+        {
+          "id": 4,
+          "competence": {
+            "id": "4",
+            "nom": "Vue.js",
+            "description": "The progressive JavaScript framework",
+            "dateDajoutCompetence": "2024-04-23T13:55:48.523+00:00"
+          },
+          "dateDajoutCompetence": "2024-04-20T08:00:00Z",
+          "level": "Intermediate"
+        }
+      ]
+    },
+    {
+      "id": "3p",
+      "titre": "backend developer",
+      "description": "Looking for backend developers proficient in Java Spring",
+      "status": "OUVERT",
+      "creationDate": null,
+      "closureDate": null,
+      "salary": 1900,
+      "contractType": "CDI",
+      "team": "HR",
+      "collab": {
+        "id": 2,
+        "nom": "marwen",
+        "email": "marwen@gmail.com",
+        "collabDate": null,
+        "competences": [
+          {
+            "id": "5",
+            "nom": "Java",
+            "description": "A widely-used programming language for building enterprise-scale applications",
+            "dateDajoutCompetence": "2024-04-23T13:55:48.523+00:00"
+          },
+          {
+            "id": "6",
+            "nom": "Spring Framework",
+            "description": "A powerful and comprehensive framework for building Java applications",
+            "dateDajoutCompetence": "2024-04-23T13:55:48.523+00:00"
+          }
+        ]
+      },
+      "posteCompetences": [
+        {
+          "id": 5,
+          "competence": {
+            "id": "5",
+            "nom": "Java",
+            "description": "A widely-used programming language for building enterprise-scale applications",
+            "dateDajoutCompetence": "2024-04-23T13:55:48.523+00:00"
+          },
+          "dateDajoutCompetence": "2024-04-21T08:00:00Z",
+          "level": "Intermediate"
+        },
+        {
+          "id": 6,
+          "competence": {
+            "id": "6",
+            "nom": "Spring Framework",
+            "description": "A powerful and comprehensive framework for building Java applications",
+            "dateDajoutCompetence": "2024-04-23T13:55:48.523+00:00"
+          },
+          "dateDajoutCompetence": "2024-04-21T08:00:00Z",
+          "level": "Intermediate"
+        }
+      ]
+    }
+  ]
+}
